@@ -1,0 +1,115 @@
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "__ROOT__/",
+    JS_ROOT: "public/js/",
+    TOKEN: ""
+};
+</script>
+<!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--[if lt IE 9]>
+    	<script src="__TMPL__Public/js/jquery.min.1.js"></script>
+		<script src="__TMPL__Public/js/modernizr.js"></script>
+		<script src="__TMPL__Public/js/amazeui.ie8polyfill.min.js"></script>
+	<![endif]-->
+	<!--[if (gte IE 9)|!(IE)]><!-->
+		<script src="__TMPL__Public/js/jquery.min.js"></script>
+	<!--<![endif]-->
+    <script src="__TMPL__Public/js/amazeui.min.js"></script>
+    <script src="__PUBLIC__/js/wind.js"></script>
+    <script src="__TMPL__Public/simpleboot/bootstrap/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/frontend.js"></script>
+	<script>
+	$(function(){
+		$('body').on('touchstart.dropdown', '.dropdown-menu', function (e) { e.stopPropagation(); });
+		
+		// $("#main-menu li.dropdown").hover(function(){
+		// 	$(this).addClass("open");
+		// },function(){
+		// 	$(this).removeClass("open");
+		// });
+		
+		$.post("{:U('user/index/is_login')}",{},function(data){
+			if(data.status==1){
+				if(data.user.avatar){
+					$("#main-menu-user .headicon").attr("src",data.user.avatar.indexOf("http")==0?data.user.avatar:"__UPLOAD__avatar/"+data.user.avatar);
+				}
+				
+				$("#main-menu-user .user-nicename").text(data.user.user_nicename!=""?data.user.user_nicename:data.user.user_login);
+				$("#main-menu-user li.login").show();
+				
+			}
+			if(data.status==0){
+				$("#main-menu-user li.offline").show();
+			}
+			
+		});	
+		;(function($){
+			$.fn.totop=function(opt){
+				var scrolling=false;
+				return this.each(function(){
+					var $this=$(this);
+					$(window).scroll(function(){
+						if(!scrolling){
+							var sd=$(window).scrollTop();
+							if(sd>100){
+								$this.fadeIn();
+							}else{
+								$this.fadeOut();
+							}
+						}
+					});
+					
+					$this.click(function(){
+						scrolling=true;
+						$('html, body').animate({
+							scrollTop : 0
+						}, 500,function(){
+							scrolling=false;
+							$this.fadeOut();
+						});
+					});
+				});
+			};
+		})(jQuery); 
+		
+		$("#backtotop").totop();
+		
+		
+	});
+	</script>
+	<script type="text/javascript">
+		$("#nav li").hover(
+			function(){
+				clearTimeout(setTimeout("0")-1);
+				$(".am-dropdown-wrapper").hide(); 
+				if($(this).attr('class') == 'nav-dropdown' || $(this).attr('class') == 'nav-dropdown am-active') {
+					$('#nav-common-wrapper').show();
+					$(this).find('.am-dropdown-wrapper').show();
+					$(this).find('a>span').removeClass('am-icon-caret-down').addClass('am-icon-caret-up');
+				}
+			},
+			function(){
+				$('#nav-common-wrapper').hide();
+				$(this).find('.am-dropdown-wrapper').hide(); 
+				$(this).find('a>span').removeClass('am-icon-caret-up').addClass('am-icon-caret-down');
+			}
+		);
+		$(function(){
+			var regState = new RegExp("state=([^&]*)(&|$)"),
+				url = window.location.href,
+				str = url.match(regState),
+				state;
+			if (str) {
+				state = str[1];
+			}
+			if(state == undefined) {
+				$('#nav li').eq(0).addClass('am-active');
+			}else{
+				$('#nav li').find('a[data-state="' + state + '"]').parent('li').addClass('am-active');
+			}	
+		});
+	</script>
+

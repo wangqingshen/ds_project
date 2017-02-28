@@ -1,0 +1,8 @@
+[ 2016-05-17T09:34:33+08:00 ] 127.0.0.1 /deshang/trunk/index.php?g=Admin&m=public&a=dologin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `dh_users` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `dh_users` WHERE `user_login` = 'cgkei23' LIMIT 1   [ RunTime:0.0060s ]
+

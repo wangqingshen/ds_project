@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_name} 新闻资讯</title>
+		<meta name="keywords" content="{$post_keywords}" />
+		<meta name="description" content="{$post_excerpt}">
+		<tc_include file="Public:head" />
+	</head>
+<body class="">
+<tc_include file="Public:nav" />
+<div id="news-banner" class="common-banner">
+	<div class="common-banner-icon"></div>
+</div>
+<div class="common-title-container">
+	<div class="ds-title-div">
+		<em class="common-title-icon"></em>
+		<span style="margin-left:18px;">新闻资讯</span>
+	</div>
+</div>
+<div class="news-detail-wrapper">
+	<div class="news-detail-container">
+		<div class="news-detail-left">
+			<h1 class="news-detail-title">{$article['post_title']}</h1>
+			<div class="news-detail-info">
+				<span>发布时间：{$article['post_date']}</span>
+				<!-- <span class="news-detail-line">|</span>
+				<span>浏览：{$article['post_hits']}</span> -->
+			</div>
+			<div class="news-detail-content">
+				{$article['post_content']}
+			</div>
+			<div class="news-detail-btn">
+				<div style="font-size:12px;color:#333;margin: 30px 0 14px;">上一篇：<a class="news-detail-prev" href="{:leuu('article/index',array('id'=>$prev['tid'],'cid'=>$prev['term_id'],'state'=>'news'))}">{$prev['post_title']}</a></div>
+				<div  style="font-size:12px;color:#333;margin-bottom: 20px;">下一篇：<a class="news-detail-next" href="{:leuu('article/index',array('id'=>$next['tid'],'cid'=>$next['term_id'],'state'=>'news'))}">{$next['post_title']}</a></div>
+			</div>
+			<div class="news-detail-btn">
+				<a class="news-detail-return" href="{:U('list/index',array('id'=>'2', 'state'=>'news'))}">返回列表</a>
+			</div>
+		</div>
+		<div class="news-detail-right">
+			<h2 class="news-detail-t">最新资讯</h2>
+			<ul class="news-detail-list">
+				<foreach name="new_articles" item="vo">
+				<li style="position:relative;"><em style="display:inline-block;width:3px;height:3px;background-color:#666;left:0;top:6px;position:absolute;"></em><a style="margin-left:10px;" href="{:U('article/index',array('id'=>$vo['tid'], 'state'=>'news'))}">{$vo.post_title}</a></li>
+				</foreach>
+			</ul>
+			<div style="text-align: center;padding-top: 20px;">
+				<a class="news-detail-more" href="{:U('list/index',array('id'=>'2', 'state'=>'news'))}">更多...</a>
+			</div>
+		</div>
+	</div>
+</div>
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+</body>
+</html>

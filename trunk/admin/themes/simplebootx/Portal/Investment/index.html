@@ -1,0 +1,95 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="javascript:;">案例管理</a></li>
+			<li><a href="{:U('Investment/add',array('term'=>empty($term['term_id'])?'':$term['term_id']))}" target="_self">添加案例</a></li>
+		</ul>
+		<form class="js-ajax-form" action="" method="post">
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th>标题</th>
+
+						<th width="50">缩略图</th>
+						<th width="80">作者</th>
+						<th width="70">发布时间</th>
+						<th width="70">操作</th>
+					</tr>
+				</thead>
+				
+				<foreach name="posts" item="vo">
+				<tr>
+					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.tid}" title="ID:{$vo.tid}"></td>
+					<td><input name="listorders[{$vo.tid}]" class="input input-order" type="text" size="5" value="{$vo.listorder}" title="ID:{$vo.tid}"></td>
+					<td><span>{$vo.post_title}</span></td>
+					<td>
+						<php>$smeta=json_decode($vo['smeta'],true);</php>
+						<if condition="!empty($smeta['thumb'])">
+							<a href="{:sp_get_asset_upload_path($smeta['thumb'])}" target='_blank'>查看</a>
+						</if>
+					</td>
+					<td>{$users[$vo['post_author']]['user_login']}</td>
+					<td>{$vo.post_date}</td>
+					<td>
+						<a href="{:U('Investment/edit',array('term'=>empty($term['term_id'])?'':$term['term_id'],'id'=>$vo['id']))}">{:L('EDIT')}</a> | 
+						<a href="{:U('Investment/delete',array('term'=>empty($term['term_id'])?'':$term['term_id'],'tid'=>$vo['tid']))}" class="js-ajax-delete">{:L('DELETE')}</a></td>
+				</tr>
+				</foreach>
+				
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('Investment/listorders')}">{:L('SORT')}</button>
+			</div>
+			<div class="pagination">{$Page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		function refersh_window() {
+			var refersh_time = getCookie('refersh_time');
+			if (refersh_time == 1) {
+				window.location = "{:U('Investment/index',$formget)}";
+			}
+		}
+		setInterval(function() {
+			refersh_window();
+		}, 2000);
+		$(function() {
+			setCookie("refersh_time", 0);
+			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+				//批量移动
+				$('.js-articles-move').click(function(e) {
+					var str = 0;
+					var id = tag = '';
+					$("input[name='ids[]']").each(function() {
+						if ($(this).attr('checked')) {
+							str = 1;
+							id += tag + $(this).val();
+							tag = ',';
+						}
+					});
+					if (str == 0) {
+						art.dialog.through({
+							id : 'error',
+							icon : 'error',
+							content : '您没有勾选信息，无法进行操作！',
+							cancelVal : '关闭',
+							cancel : true
+						});
+						return false;
+					}
+					var $this = $(this);
+					art.dialog.open("__ROOT__/index.php?g=portal&m=AdminPost&a=move&ids="+ id, {
+						title : "批量移动",
+						width : "80%"
+					});
+				});
+			});
+		});
+	</script>
+</body>
+</html>

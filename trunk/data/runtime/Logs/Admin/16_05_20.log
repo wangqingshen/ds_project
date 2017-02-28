@@ -1,0 +1,37 @@
+[ 2016-05-20T09:27:54+08:00 ] 127.0.0.1 /deshang/trunk/index.php?g=Admin&m=public&a=dologin
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `dh_users` [ RunTime:0.0220s ]
+SQL: SELECT * FROM `dh_users` WHERE `user_login` = 'admin' LIMIT 1   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `dh_role_user` [ RunTime:0.0150s ]
+SQL: SELECT `role_id` FROM dh_role_user a INNER JOIN dh_role as b on a.role_id =b.id  WHERE `user_id` = '1' AND `status` = 1  [ RunTime:0.0020s ]
+SQL: UPDATE `dh_users` SET `user_login`='admin',`user_pass`='###1631a822020da3ae168a90f3000a57a4',`user_nicename`='admin',`user_email`='dsds@dsds.com',`user_url`='',`avatar`=NULL,`sex`='0',`birthday`=NULL,`signature`=NULL,`last_login_ip`='127.0.0.1',`last_login_time`='2016-05-20 09:27:54',`create_time`='2016-03-29 09:03:46',`user_activation_key`='',`user_status`='1',`score`='0',`user_type`='1',`coin`='0',`mobile`='' WHERE `id` = '1' [ RunTime:0.0140s ]
+
+[ 2016-05-20T09:29:02+08:00 ] 127.0.0.1 /deshang/trunk/index.php?g=Admin&m=slide&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `dh_users` [ RunTime:0.0210s ]
+SQL: SELECT * FROM `dh_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `dh_slide` [ RunTime:0.0210s ]
+SQL: SHOW COLUMNS FROM `dh_slide_cat` [ RunTime:0.0170s ]
+NOTIC: [8] Undefined index: validate D:\xampps\htdocs\deshang\trunk\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\xampps\htdocs\deshang\trunk\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dh_slide` SET `slide_cid`='1',`slide_name`='12321321',`slide_url`='http://www.baidu.com',`slide_des`='',`slide_content`='',`slide_pic`='/deshang/trunk/data/upload/20160520/573e685b9a312.jpg' WHERE `slide_id` = '1' [ RunTime:0.0010s ]
+
+[ 2016-05-20T09:29:31+08:00 ] 127.0.0.1 /deshang/trunk/index.php?g=Admin&m=slide&a=edit_post
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006001s ]
+SQL: SHOW COLUMNS FROM `dh_users` [ RunTime:0.0170s ]
+SQL: SELECT * FROM `dh_users` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `dh_slide` [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `dh_slide_cat` [ RunTime:0.0130s ]
+NOTIC: [8] Undefined index: validate D:\xampps\htdocs\deshang\trunk\simplewind\Core\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto D:\xampps\htdocs\deshang\trunk\simplewind\Core\Library\Think\Model.class.php 第 1128 行.
+SQL: UPDATE `dh_slide` SET `slide_cid`='1',`slide_name`='dasdfgdgd',`slide_url`='http://www.qq.com',`slide_des`='',`slide_content`='',`slide_pic`='/deshang/trunk/data/upload/20160520/573e687880b85.jpg' WHERE `slide_id` = '2' [ RunTime:0.0000s ]
+

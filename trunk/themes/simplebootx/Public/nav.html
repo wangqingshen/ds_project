@@ -1,0 +1,68 @@
+{:hook('body_start')}
+<header class="am-topbar">
+	<div class="am-topbar-1">
+		<h1 class="am-topbar-brand">
+			<a href="__ROOT__/">德商资本</a>
+		</h1>
+
+		<button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only"
+          data-am-collapse="{target: '#doc-topbar-collapse'}">
+			<span class="am-sr-only">导航切换</span>
+			<span
+      class="am-icon-bars"></span>
+		</button>
+		<div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
+			<ul id="nav" class="am-nav am-nav-pills am-topbar-nav am-topbar-right" style="height:60px;margin-top: 0;">
+
+				<li>
+					<a href="__ROOT__/">首页</a>
+				</li>
+				<li class="nav-dropdown" style="min-width: 70px;">
+				 	<a href="{:U('page/index',array('id'=>'2', 'state'=>'about_us'))}" data-state="about_us">
+				 		关于我们
+				 		<span class="am-icon-caret-down"></span>
+				 	</a>
+				 	<div class="am-dropdown-wrapper">
+				 		<span>
+				 			<a href="{:U('page/index#yb',array('state'=>'about_us','id'=>'2'))}" data-state="about_us">优贝空间</a>
+				 		</span>
+				 		<span>
+				 			<a href="{:U('page/index#jd',array('state'=>'about_us','id'=>'2'))}" data-state="about_us">奇点基金</a>
+				 		</span>
+				 		<span>
+				 			<a href="{:U('page/index#ck',array('state'=>'about_us','id'=>'2'))}" data-state="about_us">创客基金</a>
+				 		</span>
+				 	</div>
+				</li>
+				<li>
+					<a href="{:U('page/index',array('id'=>'1', 'state'=>'case'))}" data-state="case">投资案例</a>
+				</li>
+				<li>
+					<a href="{:U('list/index',array('id'=>'2', 'state'=>'news'))}" data-state="news">新闻资讯</a>
+				</li>
+				<li class="nav-dropdown" style="min-width: 70px;">
+				 	<a href="{:U('partner/index',array('state'=>'partner', 'char'=>'p'))}" data-state="partner">
+				 		合作伙伴
+				 		<span class="am-icon-caret-down"></span>
+				 	</a>
+				 	<div class="am-dropdown-wrapper">
+				 		<span>
+				 			<a href="{:U('partner/index#jcc',array('state'=>'partner', 'char'=>'p'))}" data-state="partner">北京金长川</a>
+				 		</span>
+				 		<span>
+				 			<a href="{:U('partner/index#lgdc',array('state'=>'partner', 'char'=>'p'))}" data-state="partner">蓝光地产</a>
+				 		</span>
+				 		<span>
+				 			<a href="{:U('partner/index#sldc',array('state'=>'partner', 'char'=>'p'))}" data-state="partner">三利地产</a>
+				 		</span>
+				 	</div>
+				</li>
+				<li>
+					<a href="{:U('contact/index',array('id'=>'2','state'=>'contact_us'))}" data-state="contact_us">联系我们</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+	<div id="nav-common-wrapper"></div>
+</header>

@@ -1,0 +1,18 @@
+.common-title-icon{
+	background: url('../images/icon/icon2.png') no-repeat;
+	top:24px;
+}
+.case-item-icon{
+	background: url('../images/icon/default_logo.png') no-repeat center;
+}
+.case-item-img{
+	width:140px;
+	height: 140px;
+	margin-top: 29px
+}
+.case-item-btn{
+	background: url('../images/icon/default_btn.png') no-repeat center;
+}
+.case-item-btn-hover{
+	background: url('../images/icon/hover_btn.png') no-repeat center;
+}

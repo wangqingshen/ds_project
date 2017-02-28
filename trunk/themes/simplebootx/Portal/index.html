@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_name} 首页</title>
+		<meta name="keywords" content="{$site_seo_keywords}" />
+		<meta name="description" content="{$site_seo_description}">
+		<tc_include file="Public:head" />
+		<!-- <link href="__TMPL__Public/css/slippry/slippry.css" rel="stylesheet"> -->
+	</head>
+<body class="body-white">
+<tc_include file="Public:nav" />
+
+<php>
+$home_slides=sp_getslide("index_slide");
+
+$home_slides=empty($home_slides)?$default_home_slides:$home_slides;
+</php>
+<div class="ds-part">
+	<div data-am-flexslider="{playAfterPaused: 3000, animation: 'fade'}" class="am-slider am-slider-default">
+		<ul class="am-slides">
+			<foreach name="home_slides" item="vo">
+				<li>
+					<a href="{$vo.slide_url}" target="_blank">
+					<img src="{:sp_get_asset_upload_path($vo['slide_pic'])}"></a></li>
+				
+			</foreach>
+		</ul>
+	</div>
+</div>
+<div id="ds-part1" class="ds-part">
+	<div class="am-content-1">
+		<div class="am-content-header-logo"></div>
+		<div class="am-content-header-t">德商资本</div>
+		<div class="am-content-desc"> 
+			<!-- <em >成都德商投资集团</em> -->
+			<span>
+				德商资本成立于2014年，总部位于成都市高新区孵化园德商国际大楼，是四川最大民营投资机构，目前资金管理规模超过10个亿。德商资本专注于为初创期、成长期以及成熟期等不同发展阶段的优质创新型企业，提供从种子轮、天使轮、A轮、B轮到IPO、产业并购等全程融资服务。德商资本规划在未来5年内上市，上市后管理资金规模达到100亿，成为国内最有影响力的投资机构之一。
+
+为实现投资业务的全产业链布局，德商资本打造了从优贝空间孵化器到德商奇点基金、德商创客基金、德商鼎祥基金等系列产品线布局。同时整合国内优质资源，紧紧把握行业趋势，为项目团队提供创业培训、专家指导、信息咨询、上市指导等增值服务，全力协助被投企业发展。
+
+德商资本目前业务范围已拓展至北京、深圳，接下来还将在上海、广州等城市展开全国性快速布局。德商资本主要专注于移动互联网、智能硬件、大健康、现代服务业、文化娱乐、旅游、体育等领域。德商资本将持续寻找全球优质项目，致力于用投资改变世界，与优质创业者共同创造未来。
+			</span>
+		</div>
+	</div>
+</div>
+<div id="ds-part2" class="ds-part">
+	<div class="am-sec-content"></div>
+</div>
+<div id="ds-part3" class="ds-part">
+	<div class="am-thr-content">
+		<i class="arrow-up"></i>
+		<div class="am-thr-content-title">
+			<em class="am-thr-content-cht">团队介绍</em>
+			<em class="am-thr-content-ent">OUR TEAM</em>
+		</div>
+		<div class="am-thr-content-logo"></div>
+		<div class="am-thr-content-desc">
+			德商资本团队数十人，广聚业界高级金融、法律、投资专家等精英人士，在行业分析、投资管理、产业经营、IPO等方面，均有深刻的认识和理解，具备丰富的实践操作经验。团队一直以来本着最诚信、最专业、和最高效的服务精神及务实的作风，致力于用投资改变世界，与优质创业者共同创造未来。
+		</div>
+	</div>
+</div>
+<tc_include file="Public:footer"/>
+
+
+<tc_include file="Public:scripts"/>
+<script src="__TMPL__Public/js/slippry.min.js"></script>
+{:hook('footer_end')}
+</body>
+</html>

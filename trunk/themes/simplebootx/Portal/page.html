@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{$site_name} 投资案例</title>
+	<meta name="keywords" content="{$post_keywords}" />
+	<meta name="description" content="{$post_excerpt}">
+	<tc_include file="Public:head" />
+</head>
+<body>
+<tc_include file="Public:nav" />
+<div id="case-banner" class="common-banner">
+	<div class="common-banner-icon"></div>
+</div>
+<div class="common-title-container">
+	<div class="ds-title-div">
+		<em class="common-title-icon"></em>
+		<span style="margin-left:18px;">投资案例</span>
+	</div>
+</div>
+<div id="invest-case-wrapper" class="ds-part">
+<!-- 	<foreach name="posts" item="vo">
+	<div class="case-item" >
+		<div class="case-item-logo">
+			<div class="case-item-icon">
+				<php>$smeta=json_decode($vo['smeta'],true);</php>
+				<image src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="投资项目logo" class="case-item-image" />
+				<a class="case-item-btn" href="#">点击进入网站</a>
+			</div>
+		</div>
+		<div class="case-item-desc">
+			<span class="case-item-title">{$vo.post_title}</span>
+			<span class="case-item-detail">
+				{$vo.post_content}
+			</span>
+		</div>
+	</div>
+	</foreach> -->
+</div>
+<div class="case-more-wrapper">
+	<a class="case-more-btn">加载更多</a>
+</div>
+<tc_include file="Public:footer"/>
+    
+<!-- JavaScript -->
+<tc_include file="Public:scripts" />
+</body>
+<script type="text/javascript">
+	var url = "{:U('page/investment_list')}",
+		imgUrl = "__ROOT__/data/upload/",
+		defaultUrl = "__TMPL__Public/images/";
+</script>
+ <script src="__TMPL__Public/js/case.js"></script>
